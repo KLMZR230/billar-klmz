@@ -43,60 +43,98 @@
         .pool-table {
             width: 800px;
             height: 400px;
-            background: linear-gradient(135deg, #228B22, #32CD32, #228B22);
-            border: 15px solid #8B4513;
-            border-radius: 20px;
+            /* MESA VERDE REALISTA */
+            background: 
+                radial-gradient(ellipse at center, #2d8a2f 0%, #1e5f20 50%, #0d3f0e 100%),
+                linear-gradient(45deg, #228B22 0%, #32CD32 25%, #228B22 50%, #1E7B1E 75%, #0F5F0F 100%);
+            border: 20px solid #4A2C17;
+            border-radius: 25px;
             position: relative;
             box-shadow: 
-                0 0 20px rgba(0,0,0,0.5),
-                inset 0 0 30px rgba(0,0,0,0.2),
-                inset 0 0 10px rgba(255,255,255,0.1);
+                0 0 30px rgba(0,0,0,0.8),
+                inset 0 0 20px rgba(0,0,0,0.4),
+                inset 0 0 5px rgba(255,255,255,0.1);
             margin: 20px 0;
+            /* Textura de fieltro */
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(46,125,50,0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(46,125,50,0.3) 0%, transparent 50%),
+                linear-gradient(90deg, transparent 49%, rgba(255,255,255,0.03) 50%, transparent 51%),
+                linear-gradient(0deg, transparent 49%, rgba(255,255,255,0.03) 50%, transparent 51%);
         }
 
         .pool-table::before {
             content: '';
             position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            background: linear-gradient(45deg, #654321, #8B4513, #654321);
-            border-radius: 25px;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            background: 
+                linear-gradient(45deg, #8B4513 0%, #A0522D 25%, #8B4513 50%, #654321 75%, #4A2C17 100%);
+            border-radius: 30px;
             z-index: -1;
-            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+            box-shadow: 
+                0 0 40px rgba(0,0,0,0.9),
+                inset 0 0 10px rgba(0,0,0,0.5);
         }
 
         .pool-table::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
             background: 
-                radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.1) 100%),
-                linear-gradient(45deg, transparent 49%, rgba(255,255,255,0.05) 50%, transparent 51%);
-            border-radius: 5px;
+                linear-gradient(135deg, rgba(50,205,50,0.1) 0%, transparent 50%, rgba(34,139,34,0.1) 100%);
+            border-radius: 10px;
             pointer-events: none;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Líneas de la mesa */
+        .pool-table .center-line {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-50%);
+        }
+
+        .pool-table .center-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80px;
+            height: 80px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
         }
 
         .pocket {
-            width: 45px;
-            height: 45px;
-            background: radial-gradient(circle, #000 0%, #222 50%, #111 100%);
+            width: 50px;
+            height: 50px;
+            background: 
+                radial-gradient(circle, #000 0%, #111 30%, #000 60%, #222 100%);
             border-radius: 50%;
             position: absolute;
-            border: 3px solid #444;
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
+            border: 4px solid #333;
+            box-shadow: 
+                inset 0 0 20px rgba(0,0,0,0.9),
+                0 0 10px rgba(0,0,0,0.8);
+            z-index: 5;
         }
 
-        .pocket.top-left { top: -22px; left: -22px; }
-        .pocket.top-center { top: -22px; left: 50%; transform: translateX(-50%); }
-        .pocket.top-right { top: -22px; right: -22px; }
-        .pocket.bottom-left { bottom: -22px; left: -22px; }
-        .pocket.bottom-center { bottom: -22px; left: 50%; transform: translateX(-50%); }
-        .pocket.bottom-right { bottom: -22px; right: -22px; }
+        .pocket.top-left { top: -25px; left: -25px; }
+        .pocket.top-center { top: -25px; left: 50%; transform: translateX(-50%); }
+        .pocket.top-right { top: -25px; right: -25px; }
+        .pocket.bottom-left { bottom: -25px; left: -25px; }
+        .pocket.bottom-center { bottom: -25px; left: 50%; transform: translateX(-50%); }
+        .pocket.bottom-right { bottom: -25px; right: -25px; }
 
         .ball {
             width: 28px;
@@ -106,9 +144,9 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 
-                3px 3px 8px rgba(0,0,0,0.4),
-                inset -2px -2px 4px rgba(0,0,0,0.3),
-                inset 3px 3px 6px rgba(255,255,255,0.4);
+                3px 3px 8px rgba(0,0,0,0.6),
+                inset -2px -2px 4px rgba(0,0,0,0.4),
+                inset 3px 3px 6px rgba(255,255,255,0.5);
             z-index: 10;
             display: flex;
             align-items: center;
@@ -120,60 +158,75 @@
 
         .ball:hover {
             transform: scale(1.1);
+            box-shadow: 
+                4px 4px 12px rgba(0,0,0,0.7),
+                inset -2px -2px 4px rgba(0,0,0,0.4),
+                inset 3px 3px 8px rgba(255,255,255,0.6);
         }
 
         .cue-ball { 
-            background: radial-gradient(circle at 35% 35%, #fff, #f0f0f0, #ddd);
+            background: 
+                radial-gradient(circle at 35% 35%, #ffffff 0%, #f8f8f8 40%, #e8e8e8 80%, #d0d0d0 100%);
             color: #333;
         }
         .ball-1 { 
-            background: radial-gradient(circle at 35% 35%, #FFD700, #FFC700, #B8860B);
+            background: 
+                radial-gradient(circle at 35% 35%, #FFD700 0%, #FFC700 50%, #E6B800 80%, #B8860B 100%);
             color: #000;
         }
         .ball-2 { 
-            background: radial-gradient(circle at 35% 35%, #4169E1, #0066CC, #003D7A);
+            background: 
+                radial-gradient(circle at 35% 35%, #4169E1 0%, #1E90FF 50%, #0066CC 80%, #003D7A 100%);
             color: #fff;
         }
         .ball-3 { 
-            background: radial-gradient(circle at 35% 35%, #FF6347, #FF4444, #CC0000);
+            background: 
+                radial-gradient(circle at 35% 35%, #FF6347 0%, #FF4500 50%, #DC143C 80%, #B22222 100%);
             color: #fff;
         }
         .ball-4 { 
-            background: radial-gradient(circle at 35% 35%, #9370DB, #8A2BE2, #5D1A9A);
+            background: 
+                radial-gradient(circle at 35% 35%, #9370DB 0%, #8A2BE2 50%, #7B68EE 80%, #5D1A9A 100%);
             color: #fff;
         }
         .ball-5 { 
-            background: radial-gradient(circle at 35% 35%, #FF8C00, #FF7F00, #CC5500);
+            background: 
+                radial-gradient(circle at 35% 35%, #FF8C00 0%, #FF7F00 50%, #FF6347 80%, #CC5500 100%);
             color: #fff;
         }
         .ball-6 { 
-            background: radial-gradient(circle at 35% 35%, #32CD32, #28A745, #228B22);
+            background: 
+                radial-gradient(circle at 35% 35%, #32CD32 0%, #28A745 50%, #228B22 80%, #006400 100%);
             color: #fff;
         }
         .ball-7 { 
-            background: radial-gradient(circle at 35% 35%, #DC143C, #B22222, #8B0000);
+            background: 
+                radial-gradient(circle at 35% 35%, #DC143C 0%, #B22222 50%, #8B0000 80%, #660000 100%);
             color: #fff;
         }
         .ball-8 { 
-            background: radial-gradient(circle at 35% 35%, #2F2F2F, #1C1C1C, #000);
+            background: 
+                radial-gradient(circle at 35% 35%, #2F2F2F 0%, #1C1C1C 50%, #0A0A0A 80%, #000000 100%);
             color: #fff;
+            border: 2px solid #444;
         }
 
         .cue-stick {
-            width: 250px;
-            height: 10px;
-            background: linear-gradient(90deg, 
-                #8B4513 0%, #A0522D 10%, #CD853F 20%, 
-                #D2691E 30%, #F4A460 50%, #D2691E 70%, 
-                #CD853F 80%, #A0522D 90%, #8B4513 100%);
+            width: 280px;
+            height: 12px;
+            background: 
+                linear-gradient(90deg, 
+                    #2F4F4F 0%, #708090 5%, #8B4513 10%, #A0522D 20%, 
+                    #CD853F 30%, #D2691E 40%, #F4A460 50%, #D2691E 60%, 
+                    #CD853F 70%, #A0522D 80%, #8B4513 90%, #654321 100%);
             position: absolute;
-            border-radius: 5px;
-            transform-origin: 5px center;
-            z-index: 5;
+            border-radius: 6px;
+            transform-origin: 8px center;
+            z-index: 15;
             box-shadow: 
-                0 2px 6px rgba(0,0,0,0.4),
-                inset 0 1px 2px rgba(255,255,255,0.3),
-                inset 0 -1px 2px rgba(0,0,0,0.3);
+                0 3px 8px rgba(0,0,0,0.5),
+                inset 0 2px 4px rgba(255,255,255,0.3),
+                inset 0 -2px 4px rgba(0,0,0,0.4);
             border: 1px solid #654321;
         }
 
@@ -182,10 +235,12 @@
             position: absolute;
             left: 0;
             top: 0;
-            width: 30px;
+            width: 35px;
             height: 100%;
-            background: linear-gradient(90deg, #2F4F4F, #708090, #2F4F4F);
-            border-radius: 5px 0 0 5px;
+            background: 
+                linear-gradient(90deg, #2F4F4F 0%, #708090 50%, #556B2F 100%);
+            border-radius: 6px 0 0 6px;
+            box-shadow: inset 0 0 4px rgba(0,0,0,0.3);
         }
 
         .cue-stick::after {
@@ -193,10 +248,87 @@
             position: absolute;
             right: 0;
             top: 2px;
-            width: 3px;
+            width: 4px;
             height: calc(100% - 4px);
-            background: #FFD700;
+            background: linear-gradient(180deg, #FFD700 0%, #FFA500 100%);
             border-radius: 2px;
+            box-shadow: 0 0 2px rgba(255,215,0,0.8);
+        }
+
+        .power-meter-container {
+            background: 
+                linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(20,20,40,0.9) 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            text-align: center;
+            border: 3px solid #4a90e2;
+            box-shadow: 
+                0 0 20px rgba(74,144,226,0.3),
+                inset 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .power-meter {
+            width: 350px;
+            height: 30px;
+            background: 
+                linear-gradient(90deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
+            border-radius: 15px;
+            margin: 15px auto;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid #555;
+            box-shadow: 
+                inset 0 0 15px rgba(0,0,0,0.9),
+                0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .power-fill {
+            height: 100%;
+            background: 
+                linear-gradient(90deg, 
+                    #00ff41 0%, #00ff41 20%, #7fff00 30%, #ffff00 45%, 
+                    #ffa500 60%, #ff4500 75%, #ff0000 90%, #cc0000 100%);
+            border-radius: 12px;
+            transition: width 0.05s ease;
+            width: 0%;
+            position: relative;
+            box-shadow: 
+                0 0 15px rgba(255,255,255,0.6),
+                inset 0 3px 6px rgba(255,255,255,0.4),
+                inset 0 -2px 4px rgba(0,0,0,0.2);
+        }
+
+        .power-text {
+            color: #4a90e2;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(74,144,226,0.5);
+        }
+
+        .power-value {
+            color: #fff;
+            font-size: 28px;
+            font-weight: bold;
+            margin-top: 15px;
+            text-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+
+        .aim-line {
+            position: absolute;
+            width: 3px;
+            background: 
+                linear-gradient(0deg, 
+                    rgba(255,255,255,0.9) 0%, 
+                    rgba(255,255,100,0.7) 30%,
+                    rgba(255,255,255,0.5) 60%, 
+                    rgba(255,255,255,0.1) 100%);
+            transform-origin: bottom center;
+            pointer-events: none;
+            z-index: 8;
+            border-radius: 2px;
+            box-shadow: 0 0 6px rgba(255,255,255,0.8);
         }
 
         .game-controls {
@@ -236,55 +368,6 @@
         .btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
-
-        .power-meter-container {
-            background: rgba(0,0,0,0.8);
-            border-radius: 15px;
-            padding: 20px;
-            margin: 15px 0;
-            text-align: center;
-            border: 2px solid #4a90e2;
-        }
-
-        .power-meter {
-            width: 300px;
-            height: 25px;
-            background: linear-gradient(90deg, #1a1a1a, #2a2a2a, #1a1a1a);
-            border-radius: 12px;
-            margin: 10px auto;
-            position: relative;
-            overflow: hidden;
-            border: 2px solid #555;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
-        }
-
-        .power-fill {
-            height: 100%;
-            background: linear-gradient(90deg, 
-                #00ff00 0%, #7fff00 20%, #ffff00 40%, 
-                #ffa500 60%, #ff4500 80%, #ff0000 100%);
-            border-radius: 10px;
-            transition: width 0.05s ease;
-            width: 0%;
-            position: relative;
-            box-shadow: 
-                0 0 10px rgba(255,255,255,0.5),
-                inset 0 2px 4px rgba(255,255,255,0.3);
-        }
-
-        .power-text {
-            color: #4a90e2;
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .power-value {
-            color: #fff;
-            font-size: 24px;
-            font-weight: bold;
-            margin-top: 10px;
         }
 
         .multiplayer-panel {
@@ -359,35 +442,23 @@
             border: 1px solid #555;
         }
 
-        .aim-line {
-            position: absolute;
-            width: 2px;
-            background: linear-gradient(0deg, 
-                rgba(255,255,255,0.8) 0%, 
-                rgba(255,255,255,0.4) 50%, 
-                rgba(255,255,255,0.1) 100%);
-            transform-origin: bottom center;
-            pointer-events: none;
-            z-index: 3;
-        }
-
         @keyframes ballRoll {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
 
         .rolling {
-            animation: ballRoll 0.5s linear infinite;
+            animation: ballRoll 0.8s linear infinite;
         }
 
         @keyframes powerPulse {
-            0% { box-shadow: 0 0 5px rgba(255,255,255,0.5); }
-            50% { box-shadow: 0 0 20px rgba(255,255,255,0.8); }
-            100% { box-shadow: 0 0 5px rgba(255,255,255,0.5); }
+            0% { box-shadow: 0 0 10px rgba(255,255,255,0.6); }
+            50% { box-shadow: 0 0 25px rgba(255,255,255,0.9); }
+            100% { box-shadow: 0 0 10px rgba(255,255,255,0.6); }
         }
 
         .power-fill.charging {
-            animation: powerPulse 0.3s infinite;
+            animation: powerPulse 0.4s infinite;
         }
 
         @media (max-width: 768px) {
@@ -406,7 +477,7 @@
             }
             
             .power-meter {
-                width: 250px;
+                width: 280px;
             }
         }
     </style>
@@ -432,15 +503,19 @@
         </div>
 
         <div class="power-meter-container">
-            <div class="power-text">💪 POTENCIA DEL TIRO</div>
+            <div class="power-text">⚡ POTENCIA DEL TIRO ⚡</div>
             <div class="power-meter">
                 <div class="power-fill" id="powerFill"></div>
             </div>
             <div class="power-value" id="powerValue">0%</div>
-            <p style="color: #ccc; margin-top: 10px;">Mantén presionado CLICK o ESPACIO para cargar</p>
+            <p style="color: #ccc; margin-top: 10px;">🖱️ Mantén CLICK o ⌨️ ESPACIO para cargar potencia</p>
         </div>
 
         <div class="pool-table" id="poolTable">
+            <!-- Líneas de la mesa -->
+            <div class="center-line"></div>
+            <div class="center-circle"></div>
+            
             <!-- Buchacas -->
             <div class="pocket top-left"></div>
             <div class="pocket top-center"></div>
@@ -498,7 +573,7 @@
             <h3>💬 Chat del Juego</h3>
             <div class="chat-container" id="chatContainer">
                 <p><strong>Sistema:</strong> ¡Bienvenido a Pool Master Online!</p>
-                <p><strong>Sistema:</strong> Encuentra oponentes y demuestra tus habilidades</p>
+                <p><strong>Sistema:</strong> ¡Mesa de billar verde profesional lista!</p>
                 <p><strong>Sistema:</strong> Mueve el mouse para apuntar, mantén click para cargar potencia</p>
             </div>
             <div class="chat-input">
@@ -531,12 +606,11 @@
 
             startGame() {
                 this.gameStarted = true;
-                this.addChatMessage('Sistema', '¡Juego iniciado! Usa el mouse para apuntar y hacer click para disparar');
+                this.addChatMessage('Sistema', '🎱 ¡Mesa verde profesional cargada! Usa el mouse para apuntar');
             }
 
             setupEventListeners() {
                 const poolTable = document.getElementById('poolTable');
-                const cueStick = document.getElementById('cueStick');
 
                 // Mouse events para apuntar
                 poolTable.addEventListener('mousemove', (e) => {
@@ -586,7 +660,7 @@
                     }
                 });
 
-                // Prevenir context menu en la mesa
+                // Prevenir context menu
                 poolTable.addEventListener('contextmenu', (e) => {
                     e.preventDefault();
                 });
@@ -606,21 +680,21 @@
                 const mouseY = e.clientY - rect.top;
                 
                 const angle = Math.atan2(mouseY - cueBallY, mouseX - cueBallX);
-                const distance = this.isCharging ? 80 : 60;
+                const distance = this.isCharging ? 90 : 70;
                 
                 const cueX = cueBallX - Math.cos(angle) * distance;
                 const cueY = cueBallY - Math.sin(angle) * distance;
                 
                 // Posicionar el taco
                 cueStick.style.left = cueX + 'px';
-                cueStick.style.top = (cueY - 5) + 'px';
+                cueStick.style.top = (cueY - 6) + 'px';
                 cueStick.style.transform = `rotate(${angle}rad)`;
                 cueStick.style.display = 'block';
                 
                 // Mostrar línea de apuntado
-                const lineLength = 150;
-                const lineX = cueBallX + Math.cos(angle) * 20;
-                const lineY = cueBallY + Math.sin(angle) * 20;
+                const lineLength = 180;
+                const lineX = cueBallX + Math.cos(angle) * 25;
+                const lineY = cueBallY + Math.sin(angle) * 25;
                 
                 aimLine.style.left = lineX + 'px';
                 aimLine.style.top = lineY + 'px';
@@ -644,7 +718,7 @@
                 const chargePower = () => {
                     if (!this.isCharging) return;
 
-                    this.power += this.powerDirection * 3;
+                    this.power += this.powerDirection * 2.5;
                     
                     if (this.power >= 100) {
                         this.power = 100;
@@ -679,21 +753,21 @@
                 // Simular movimiento de la bola
                 cueBall.classList.add('rolling');
                 
-                // Ocultar taco y línea de apuntado
+                // Ocultar taco y línea
                 cueStick.style.display = 'none';
                 aimLine.style.display = 'none';
                 
-                // Simular física básica con movimiento
+                // Física básica
                 const currentLeft = parseInt(cueBall.style.left);
                 const currentTop = parseInt(cueBall.style.top);
                 const powerFactor = this.power / 100;
-                const moveDistance = powerFactor * 200;
+                const moveDistance = powerFactor * 250;
                 
                 const angle = parseFloat(cueStick.style.transform.replace('rotate(', '').replace('rad)', ''));
                 const newX = Math.min(750, Math.max(20, currentLeft + Math.cos(angle) * moveDistance));
                 const newY = Math.min(350, Math.max(20, currentTop + Math.sin(angle) * moveDistance));
                 
-                cueBall.style.transition = 'all 1.5s ease-out';
+                cueBall.style.transition = 'all 2s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
                 cueBall.style.left = newX + 'px';
                 cueBall.style.top = newY + 'px';
                 
@@ -702,13 +776,13 @@
                     cueBall.style.transition = '';
                     this.switchPlayer();
                     this.updateScore();
-                }, 1500);
+                }, 2000);
 
                 // Reset power meter
                 powerFill.style.width = '0%';
                 document.getElementById('powerValue').textContent = '0%';
                 
-                this.addChatMessage('Sistema', `¡${this.getCurrentPlayerName()} hizo un tiro con ${Math.round(this.power)}% de potencia!`);
+                this.addChatMessage('Sistema', `💥 ${this.getCurrentPlayerName()} disparó con ${Math.round(this.power)}% de potencia!`);
                 
                 this.power = 0;
             }
@@ -719,7 +793,7 @@
                 document.getElementById('player1').classList.toggle('active', this.currentPlayer === 1);
                 document.getElementById('player2').classList.toggle('active', this.currentPlayer === 2);
                 
-                this.addChatMessage('Sistema', `Turno de ${this.getCurrentPlayerName()}`);
+                this.addChatMessage('Sistema', `🔄 Turno de ${this.getCurrentPlayerName()}`);
             }
 
             getCurrentPlayerName() {
@@ -727,13 +801,13 @@
             }
 
             updateScore() {
-                const points = Math.floor(Math.random() * 15) + 5;
+                const points = Math.floor(Math.random() * 20) + 5;
                 this.scores[`player${this.currentPlayer}`] += points;
                 document.getElementById(`score${this.currentPlayer}`).textContent = this.scores[`player${this.currentPlayer}`];
             }
 
             updateOnlineCounter() {
-                this.onlinePlayers += Math.floor(Math.random() * 20) - 10;
+                this.onlinePlayers += Math.floor(Math.random() * 30) - 15;
                 this.onlinePlayers = Math.max(150, Math.min(800, this.onlinePlayers));
                 document.getElementById('playersOnline').textContent = this.onlinePlayers;
             }
@@ -750,29 +824,27 @@
         // Funciones globales
         function startOnlineGame() {
             game.gameStarted = true;
-            game.addChatMessage('Sistema', '¡Partida online iniciada! Buscando oponente...');
+            game.addChatMessage('Sistema', '🌐 Buscando oponente en mesa verde profesional...');
             
             setTimeout(() => {
-                const opponents = ['Alex_Pool', 'BillarMaster', 'CueShark', 'PoolLegend', 'EightBallPro', 'SnookerKing'];
+                const opponents = ['PoolMaster_Pro', 'BillarLegend', 'CueShark_99', 'EightBall_King', 'SnookerAce', 'GreenTable_Hero'];
                 const opponent = opponents[Math.floor(Math.random() * opponents.length)];
-                game.addChatMessage('Sistema', `¡Oponente encontrado: ${opponent}!`);
+                game.addChatMessage('Sistema', `✅ ¡Oponente encontrado: ${opponent}!`);
                 document.getElementById('player2').querySelector('h3').textContent = `🎯 ${opponent}`;
-            }, 2000);
+            }, 2500);
         }
 
         function inviteFriend() {
             const friendCode = Math.random().toString(36).substring(2, 8).toUpperCase();
-            game.addChatMessage('Sistema', `🔗 Código de invitación: ${friendCode}`);
-            game.addChatMessage('Sistema', 'Comparte este código con tu amigo para jugar juntos');
+            game.addChatMessage('Sistema', `🔗 Código de sala: ${friendCode}`);
+            game.addChatMessage('Sistema', '📱 Comparte este código con tu amigo');
             
-            // Simular invitación
             if (navigator.share) {
                 navigator.share({
-                    title: 'Pool Master Online',
+                    title: 'Pool Master Online - Mesa Verde',
                     text: `¡Únete a mi partida de billar! Código: ${friendCode}`,
                     url: window.location.href
                 }).catch(() => {
-                    // Fallback para navegadores sin soporte
                     copyToClipboard(`Pool Master Online - Código: ${friendCode} - ${window.location.href}`);
                 });
             } else {
@@ -784,7 +856,6 @@
             navigator.clipboard.writeText(text).then(() => {
                 alert('📋 Código copiado al portapapeles');
             }).catch(() => {
-                // Fallback manual
                 const textArea = document.createElement('textarea');
                 textArea.value = text;
                 document.body.appendChild(textArea);
@@ -813,7 +884,7 @@
             document.getElementById('cueStick').style.display = 'none';
             document.getElementById('aimLine').style.display = 'none';
             
-            game.addChatMessage('Sistema', '🔄 Juego reiniciado - ¡A jugar!');
+            game.addChatMessage('Sistema', '🔄 Mesa verde reiniciada - ¡Nueva partida!');
         }
 
         function toggleFullscreen() {
@@ -832,13 +903,12 @@
                 game.addChatMessage('Tú', message);
                 input.value = '';
                 
-                // Simular respuesta del oponente
                 setTimeout(() => {
                     const responses = [
-                        '¡Buen tiro!', '¡Excelente jugada!', 'Mi turno ahora', 
-                        '¿Listo para perder?', '¡Vamos por otra!', 'Buena suerte',
-                        '¡Increíble!', 'No estuvo mal', '¡A por todas!',
-                        '¡Esa potencia!', 'Buen ángulo', '¡Casi!'
+                        '¡Excelente tiro en esta mesa!', '¡Me gusta el verde de esta mesa!', 'Buena mesa profesional', 
+                        '¿Listo para la siguiente?', '¡Gran partida!', 'Mesa perfecta para jugar',
+                        '¡Increíble precisión!', 'Buena técnica', '¡A por todas en esta mesa!',
+                        '¡Esa potencia estuvo perfecta!', 'Buen control', '¡Mesa de campeonato!'
                     ];
                     const response = responses[Math.floor(Math.random() * responses.length)];
                     game.addChatMessage('Oponente', response);
@@ -849,7 +919,7 @@
         // Inicializar el juego
         const game = new PoolGame();
 
-        // Simulaciones adicionales de estadísticas
+        // Simulaciones de estadísticas
         setInterval(() => {
             const stats = ['gamesWon', 'accuracy', 'bestStreak'];
             const stat = stats[Math.floor(Math.random() * stats.length)];
@@ -857,25 +927,25 @@
             let value = parseInt(element.textContent) || 0;
             
             if (stat === 'accuracy') {
-                value = Math.min(100, value + Math.floor(Math.random() * 2));
+                value = Math.min(100, value + Math.floor(Math.random() * 3));
                 element.textContent = value + '%';
             } else {
                 value += Math.floor(Math.random() * 2);
                 element.textContent = value;
             }
-        }, 20000);
+        }, 25000);
 
-        // Animaciones de entrada
+        // Animación de entrada mejorada
         document.addEventListener('DOMContentLoaded', () => {
             const table = document.querySelector('.pool-table');
             table.style.opacity = '0';
-            table.style.transform = 'scale(0.9) rotateX(45deg)';
+            table.style.transform = 'scale(0.8) rotateY(25deg)';
             
             setTimeout(() => {
-                table.style.transition = 'all 1.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                table.style.transition = 'all 2s cubic-bezier(0.4, 0, 0.2, 1)';
                 table.style.opacity = '1';
-                table.style.transform = 'scale(1) rotateX(0deg)';
-            }, 300);
+                table.style.transform = 'scale(1) rotateY(0deg)';
+            }, 500);
         });
     </script>
 </body>
